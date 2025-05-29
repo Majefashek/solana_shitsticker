@@ -57,8 +57,9 @@ h1, h2, h3, h4, h5, h6 {
 .logo-icon {
     width: 30px;
     height: 30px;
+    object-fit: contain; /* Ensures the image scales nicely if it's not square */
     margin-right: 8px;
-    filter: invert(93%) sepia(12%) saturate(98%) hue-rotate(347deg) brightness(104%) contrast(93%); /* Make placeholder beige */
+    /* filter: invert(93%) sepia(12%) saturate(98%) hue-rotate(347deg) brightness(104%) contrast(93%); */ /* Remove or adjust if new PNG logo has correct colors */
     /* For fas fa-shoe-prints if used: color: #F5F5DC; */
 }
 .navbar-custom .nav-link {
@@ -403,7 +404,8 @@ h1, h2, h3, h4, h5, h6 {
 .logo-icon-footer {
     width: 25px;
     height: 25px;
-    filter: invert(93%) sepia(12%) saturate(98%) hue-rotate(347deg) brightness(104%) contrast(93%);
+    object-fit: contain; /* Ensures the image scales nicely */
+    /* filter: invert(93%) sepia(12%) saturate(98%) hue-rotate(347deg) brightness(104%) contrast(93%); */ /* Remove or adjust if new PNG logo has correct colors */
 }
 
 /* --- Animations on Scroll Placeholder --- */
