@@ -1,0 +1,598 @@
+/* --- General Styles --- */
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #F5F5DC; /* Beige */
+    color: #654321; /* Dark Leather Brown */
+    overflow-x: hidden; /* Prevent horizontal scrollbars */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif; /* Rugged, bold for sub-headers */
+}
+
+.section-title {
+    font-family: 'Rye', cursive; /* Western feel for main section titles */
+    color: #654321; /* Dark Leather Brown */
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.highlight-text {
+    color: #8B4513; /* Saddle Brown */
+}
+.highlight-text-alt {
+    color: #FFA500; /* A brighter, Solana-esque orange/gold for contrast on dark bg */
+}
+
+
+.section-bg-light {
+    background-color: #F5F5DC; /* Beige */
+}
+.section-bg-dark {
+    background-color: #654321; /* Dark Leather Brown */
+    color: #F5F5DC; /* Beige text on dark bg */
+}
+.text-beige {
+    color: #F5F5DC !important;
+}
+
+/* --- Navbar --- */
+.navbar-custom {
+    background-color: #8B4513; /* Saddle Brown */
+    /* background-image: url('https://www.transparenttextures.com/patterns/leather.png'); Subtle texture */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #654321; /* Darker brown accent */
+}
+.navbar-custom .navbar-brand {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 1.8rem;
+    color: #F5F5DC;
+    transition: transform 0.3s ease;
+}
+.navbar-custom .navbar-brand:hover {
+    transform: scale(1.05);
+}
+.logo-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    filter: invert(93%) sepia(12%) saturate(98%) hue-rotate(347deg) brightness(104%) contrast(93%); /* Make placeholder beige */
+    /* For fas fa-shoe-prints if used: color: #F5F5DC; */
+}
+.navbar-custom .nav-link {
+    color: #F5F5DC;
+    margin: 0 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+.navbar-custom .nav-link:hover {
+    color: #FFA500; /* Solana-esque Orange/Gold for hover */
+    transform: translateY(-2px);
+}
+.navbar-toggler {
+    border-color: rgba(245, 245, 220, 0.5); /* Beige border */
+}
+.btn-cta-nav {
+    background-color: #9945FF; /* Solana Purple */
+    color: #FFFFFF;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn-cta-nav:hover {
+    background-color: #7a38cc; /* Darker Solana Purple */
+    color: #FFFFFF;
+    transform: scale(1.05);
+}
+
+
+/* --- Hero Section --- */
+.hero-section {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('https://via.placeholder.com/1920x1080.png?text=Dusty+Range+Background') no-repeat center center;
+    /* Replace with your actual background: background: url('../images/dusty-range.jpg') no-repeat center center; */
+    background-size: cover;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(60, 30, 0, 0.5); /* Brownish overlay */
+}
+.hero-section .content {
+    position: relative; /* To be above overlay */
+    z-index: 1;
+}
+.hero-boots-img {
+    max-width: 250px; /* Adjust as needed */
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(-150px); /* Start further above */
+    animation: gradualFall 2s cubic-bezier(0.25, 0.1, 0.25, 1) 0.5s forwards; /* Slower, smoother fall */
+}
+@keyframes gradualFall { /* Renamed and modified animation */
+    0% {
+        opacity: 0;
+        transform: translateY(-150px); /* Start position */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End position */
+    }
+}
+
+.hero-headline {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 4rem; /* Responsive: adjust with media queries */
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+.hero-headline .stomp-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(-40px);
+    animation: stomp 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+.hero-headline .stomp-word:nth-child(1) { animation-delay: 1.5s; }
+.hero-headline .stomp-word:nth-child(2) { animation-delay: 1.9s; }
+
+@keyframes stomp {
+    0% { opacity: 0; transform: translateY(-40px) scale(0.8); }
+    60% { opacity: 1; transform: translateY(10px) scale(1.1); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.hero-tagline {
+    font-size: 1.5rem;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+    animation-delay: 2.5s;
+}
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.btn-primary-custom {
+    background-color: #8B4513; /* Saddle Brown */
+    border-color: #654321; /* Dark Leather Brown */
+    color: #F5F5DC;
+    padding: 0.8rem 2.5rem;
+    font-size: 1.2rem;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border-width: 2px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(101, 67, 33, 0.4); /* Brown shadow */
+}
+.btn-primary-custom:hover {
+    background-color: #654321; /* Dark Leather Brown */
+    border-color: #503319;
+    color: #FFFFFF;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 10px rgba(101, 67, 33, 0.6);
+}
+
+/* --- About Section --- */
+#about .about-img {
+    border: 5px solid #8B4513; /* Saddle Brown Border */
+    box-shadow: 5px 5px 15px rgba(139, 69, 19, 0.3);
+}
+
+/* --- Tokenomics Section --- */
+.token-card {
+    background-color: #F5F5DC; /* Beige */
+    border: 2px solid #8B4513; /* Saddle Brown */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+.token-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.token-card .card-header {
+    background-color: #8B4513; /* Saddle Brown */
+    color: #F5F5DC;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid #654321;
+}
+.token-card .card-body {
+    color: #654321; /* Dark Leather Brown */
+    text-align: center;
+}
+.token-card .card-title {
+    font-family: 'Oswald', sans-serif;
+    color: #556B2F; /* Camo Green */
+    font-size: 1.8rem;
+}
+
+/* --- Roadmap Section --- */
+.roadmap-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.roadmap-timeline::after { /* The central line */
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #A0522D; /* Sienna (Muddy Accent) */
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+    z-index: 0;
+}
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    z-index: 1;
+}
+/* Place items on left or right */
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+/* The circle on the timeline */
+.timeline-item .timeline-icon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: -25px;
+    background-color: #F5F5DC; /* Beige */
+    border: 4px solid #8B4513; /* Saddle Brown */
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #8B4513;
+}
+.timeline-item:nth-child(even) .timeline-icon {
+    left: -25px;
+}
+.timeline-content {
+    padding: 20px 30px;
+    background-color: #fff; /* White for readability */
+    position: relative;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+.timeline-content h4 {
+    font-family: 'Oswald', sans-serif;
+    color: #556B2F; /* Camo Green */
+}
+
+/* --- How to Buy Section --- */
+.step-card {
+    background-color: #8B4513; /* Saddle Brown */
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    color: #F5F5DC;
+    border: 2px solid #A0522D; /* Sienna */
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+.step-card:hover {
+    transform: scale(1.05);
+}
+.step-number {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    background-color: #F5F5DC;
+    color: #654321;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 auto 15px auto;
+    font-family: 'Luckiest Guy', cursive;
+}
+.step-card i {
+    color: #FFA500; /* Solana-esque Orange/Gold */
+}
+.step-card h4 {
+    font-family: 'Oswald', sans-serif;
+    color: #FFFFFF;
+    margin-top: 10px;
+}
+/* --- Fortune Kicker Cards (New Roadmap) --- */
+.fortune-kicker-card {
+    background-color: transparent;
+    width: 100%;
+    min-height: 280px; /* Can be adjusted if content changes */
+    border-radius: 10px;
+    /* perspective and position: relative are no longer needed for flip */
+}
+
+.card-face {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px; /* Increased padding */
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    /* -webkit-backface-visibility, backface-visibility, transition for transform are removed */
+}
+
+.card-front {
+    background-color: #F5F5DC; /* Beige */
+    border: 2px solid #8B4513; /* Saddle Brown */
+    color: #654321; /* Dark Leather Brown */
+}
+.card-front .kicker-icon { /* More specific selector for icons on these cards */
+    color: #8B4513; /* Saddle Brown */
+}
+.card-front h4 {
+    font-family: 'Oswald', sans-serif;
+    color: #556B2F; /* Camo Green */
+    margin-bottom: 0.75rem;
+}
+.btn-outline-primary-custom { /* New button style for front */
+    border: 2px solid #8B4513;
+    color: #8B4513;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    margin-top: 15px;
+    padding: 0.4rem 1rem;
+    font-weight: bold;
+}
+.btn-outline-primary-custom:hover {
+    background-color: #8B4513;
+    color: #F5F5DC;
+}
+
+/* --- Community Section --- */
+.btn-social {
+    background-color: #8B4513; /* Saddle Brown */
+    color: #F5F5DC;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    border: 2px solid #654321;
+}
+.btn-social:hover {
+    background-color: #654321; /* Dark Leather Brown */
+    color: #FFFFFF;
+    transform: translateY(-3px);
+}
+.btn-social i {
+    margin-right: 8px;
+}
+
+/* --- Footer --- */
+.footer-custom {
+    background-color: #654321; /* Dark Leather Brown */
+    color: #F5F5DC;
+}
+.logo-icon-footer {
+    width: 25px;
+    height: 25px;
+    filter: invert(93%) sepia(12%) saturate(98%) hue-rotate(347deg) brightness(104%) contrast(93%);
+}
+
+/* --- Animations on Scroll Placeholder --- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 991.98px) {
+    .navbar-custom .nav-link {
+        margin: 0.5rem 0;
+        text-align: center;
+    }
+    .btn-cta-nav {
+        margin-top: 0.5rem;
+        display: block;
+        width: fit-content;
+        margin-left: auto !important;
+        margin-right: auto;
+    }
+    .hero-headline {
+        font-size: 3rem;
+    }
+    .hero-tagline {
+        font-size: 1.2rem;
+    }
+    .section-title {
+        font-size: 2.2rem;
+    }
+    /* Ensure cards in a row have same height and content is centered */
+    .row.justify-content-center .col-lg-4 { /* Target columns for roadmap cards */
+        display: flex; /* Allow flex item (card) to stretch */
+    }
+    .fortune-kicker-card {
+        min-height: auto;
+        height: 100%; /* Make card fill the column height */
+        width: 100%; /* Ensure it takes full width of column */
+        display: flex; /* Allow card-face to also use height 100% effectively */
+        flex-direction: column; /* Stack card-face vertically if there were multiple */
+    }
+    .card-face.card-front {
+        flex-grow: 1; /* Allow card front to grow and fill the card */
+    }
+
+     /* Timeline adjustments for smaller screens */
+    .roadmap-timeline::after {
+        left: 31px;
+    }
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+    .timeline-item .timeline-icon {
+        left: 10px; /* Adjust icon position */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-headline {
+        font-size: 2.5rem;
+    }
+    .hero-tagline {
+        font-size: 1rem;
+    }
+    .hero-boots-img {
+        max-width: 180px;
+    }
+    .token-card .card-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .navbar-brand {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* --- Falling Emoji/Item Animation --- */
+.falling-item {
+    position: fixed; /* Relative to viewport */
+    top: -100px; /* Start off-screen */
+    font-size: 3rem; /* Adjust size of emoji/item */
+    z-index: 9999;
+    pointer-events: none; /* So it doesn't interfere with clicks */
+    animation: fallAndSpin 3s ease-in forwards;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+@keyframes fallAndSpin {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    20% { /* Slight pause or slower start */
+        transform: translateY(20vh) rotate(30deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(120vh) rotate(720deg); /* Fall off screen and spin more */
+        opacity: 0;
+    }
+}
+
+/* --- Compass Popup --- */
+.compass-popup {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    width: 150px;
+    height: 150px;
+    background-color: #F5F5DC; /* Beige */
+    border: 5px solid #8B4513; /* Saddle Brown */
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    pointer-events: none; /* Initially not interactive */
+}
+.compass-popup.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto; /* Interactive when visible */
+}
+.compass-needle {
+    width: 10px;
+    height: 70px; /* Half of compass height minus some padding */
+    background-color: red;
+    position: absolute;
+    top: 5px; /* Adjust to center pivot */
+    left: calc(50% - 5px); /* Center horizontally */
+    transform-origin: bottom center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+.compass-popup .north-marker {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    color: #654321; /* Dark Leather Brown */
+    font-family: 'Oswald', sans-serif;
+}
+.compass-popup .south-marker {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    color: #654321;
+    font-family: 'Oswald', sans-serif;
+}
+.compass-popup .east-marker {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust for padding/look */
+    transform: translateY(-50%);
+    font-weight: bold;
+    color: #654321;
+    font-family: 'Oswald', sans-serif;
+}
+.compass-popup .west-marker {
+    position: absolute;
+    top: 50%;
+    left: 10px; /* Adjust for padding/look */
+    transform: translateY(-50%);
+    font-weight: bold;
+    color: #654321;
+    font-family: 'Oswald', sans-serif;
+}
