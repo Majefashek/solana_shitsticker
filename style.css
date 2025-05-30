@@ -226,6 +226,12 @@ h1, h2, h3, h4, h5, h6 {
     color: #556B2F; /* Camo Green */
     font-size: 1.8rem;
 }
+.contract-address-text {
+    word-break: break-all; /* Allows long string to break and wrap */
+    font-size: 0.9rem; /* Slightly smaller for better fit */
+    color: #556B2F; /* Camo Green, or choose another color */
+    font-family: 'Courier New', Courier, monospace; /* Monospaced font for addresses */
+}
 
 /* --- Roadmap Section --- */
 .roadmap-timeline {

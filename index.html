@@ -74,7 +74,7 @@
         <div class="container">
             <h2 class="section-title text-center text-beige mb-5">Tokenomics: <span class="highlight-text-alt">The Lay of the Land</span></h2>
             <div class="row">
-                <div class="col-md-4 mb-4 animate-on-scroll">
+                <div class="col-lg-4 col-md-6 mb-4 animate-on-scroll">
                     <div class="card token-card">
                         <div class="card-header"><i class="fas fa-coins mr-2"></i>Total Supply</div>
                         <div class="card-body">
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4 animate-on-scroll">
+                <div class="col-lg-4 col-md-6 mb-4 animate-on-scroll">
                     <div class="card token-card">
                         <div class="card-header"><i class="fas fa-tint mr-2"></i>Liquidity</div>
                         <div class="card-body">
@@ -178,8 +178,15 @@
                         <div class="step-number">3</div>
                         <i class="fas fa-exchange-alt fa-3x mb-3"></i>
                         <h4>Swap for $SHITKICKER</h4>
-                        <p>Go to Raydium or Jupiter and swap your SOL for $SHITKICKER.</p>
-                        <button class="btn btn-cta-nav mt-3">Go to Raydium (Example)</button>
+                        <p>Go to Raydium or Jupiter and swap your SOL for $SHITKICKER. You'll need our secret handshake (aka the Contract Address) for this part:</p>
+                        <div class="contract-address-box my-3 p-3" style="background-color: rgba(255,255,255,0.05); border: 1px dashed #FFD700; border-radius: 5px; text-align: center;">
+                            <strong style="color: #FFD700; font-family: 'Rye', cursive;">Official Contract Address:</strong><br>
+                            <span id="contractAddress" style="word-break: break-all; font-size: 0.9em; color: #F5F5DC; font-family: 'Lato', sans-serif;">EghQiWpdYTmSTPuUAnEEYqJLR1xxsRYWe9GocPiipump</span><br>
+                            <button class="btn btn-sm btn-warning mt-2" onclick="copyToClipboard('EghQiWpdYTmSTPuUAnEEYqJLR1xxsRYWe9GocPiipump', this)">
+                                <i class="fas fa-copy"></i> Copy Our Secret Handshake
+                            </button>
+                        </div>
+                        <a href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=EghQiWpdYTmSTPuUAnEEYqJLR1xxsRYWe9GocPiipump" target="_blank" rel="noopener noreferrer" class="btn btn-cta-nav mt-3">Go to Raydium & Swap</a>
                     </div>
                 </div>
             </div>
@@ -192,7 +199,7 @@
             <p class="lead mb-5">No city slickers here, just good ol' fashioned fun. Grab a pair and join in!</p>
             <div class="animate-on-scroll">
                 <a href="#" class="btn btn-social mx-2"><i class="fab fa-telegram-plane fa-2x"></i> Telegram</a>
-                <a href="#" class="btn btn-social mx-2"><i class="fab fa-twitter fa-2x"></i> Twitter / X</a>
+                <a href="https://x.com/shitkickercoin?t=2preBASTQCMdVbCyRejtOA&s=09" class="btn btn-social mx-2"><i class="fab fa-twitter fa-2x"></i> Twitter / X</a>
                 <a href="#" class="btn btn-social mx-2"><i class="fab fa-discord fa-2x"></i> Discord</a>
             </div>
         </div>

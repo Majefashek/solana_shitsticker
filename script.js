@@ -30,22 +30,21 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentCount = 0;
     const increment = Math.ceil(targetCount / 100); // Adjust speed by changing divisor
 
-    function updateCount() {
+    function updateCountAnimation() { // Renamed to avoid potential global scope collision
       currentCount += increment;
       if (currentCount < targetCount) {
         el.textContent = currentCount.toLocaleString() + " $SHITKICKER"; // Or format as needed
-        requestAnimationFrame(updateCount);
+        requestAnimationFrame(updateCountAnimation);
       } else {
         el.textContent = targetCount.toLocaleString() + " $SHITKICKER";
       }
     }
-    // Basic trigger when element is somewhat visible - for full effect use Intersection Observer
-    // This is a simplified check
+
     let observerForCount = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            updateCount();
+            updateCountAnimation();
             observerForCount.unobserve(el); // Stop observing once animation starts
           }
         });
@@ -55,14 +54,14 @@ document.addEventListener("DOMContentLoaded", function () {
     observerForCount.observe(el);
   });
 
-  // Basic Scroll Animation Trigger (using Intersection Observer)
+  // Scroll Animation Trigger (using Intersection Observer)
   const animatedElements = document.querySelectorAll(".animate-on-scroll");
   if ("IntersectionObserver" in window) {
-    let observer = new IntersectionObserver(
+    const scrollObserver = new IntersectionObserver( // Changed variable name for clarity
       (entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
+            entry.target.classList.add("is-visible"); // Reverted to is-visible for CSS compatibility
             // Optional: unobserve after animation to save resources
             // observer.unobserve(entry.target);
           } else {
@@ -75,16 +74,16 @@ document.addEventListener("DOMContentLoaded", function () {
     ); // Trigger when 10% of the element is visible
 
     animatedElements.forEach((el) => {
-      observer.observe(el);
+      scrollObserver.observe(el);
     });
   } else {
     // Fallback for older browsers (simply make them visible)
     animatedElements.forEach((el) => {
-      el.classList.add("is-visible");
+      el.classList.add("is-visible"); // Reverted to is-visible
     });
   }
 
-  // Navbar shrink/style on scroll (optional)
+  // Navbar shrink/style on scroll
   const navbar = document.querySelector(".navbar-custom");
   window.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
@@ -93,12 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
       navbar.classList.remove("scrolled");
     }
   });
-  // Add this to your CSS if you want a visual change:
-  // .navbar-custom.scrolled {
-  //     padding-top: 0.5rem;
-  //     padding-bottom: 0.5rem;
-  //     background-color: rgba(139, 69, 19, 0.95); /* Slightly more transparent or solid on scroll */
-  // }
 
   // --- Fortune Kicker Card - Unique Button Actions ---
   const fallingEmojis = ["🤠", "👢", "💩", "💥", "💰", "🌵", "🐴", "🌟"]; // Add more as you like!
@@ -213,5 +206,70 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 3000); // Visible for 3 seconds
     });
   }
-
+  // The copyToClipboard function is called directly from the HTML's onclick attribute,
+  // so no specific event listener setup for a button with ID "copyContractBtn" is needed here
+  // unless you change the HTML structure.
 });
+
+function copyToClipboard(text, buttonElement) {
+  if (!navigator.clipboard) {
+    // Fallback for older browsers or insecure contexts (e.g., http)
+    try {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      // Prevent visual disruption
+      textArea.style.position = "fixed";
+      textArea.style.top = "-9999px";
+      textArea.style.left = "-9999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+
+      console.log("Fallback: Copying to clipboard was successful!");
+      if (buttonElement) {
+        const originalText = buttonElement.innerHTML;
+        const originalDisabled = buttonElement.disabled;
+        buttonElement.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        buttonElement.disabled = true;
+        setTimeout(function () {
+          buttonElement.innerHTML = originalText;
+          buttonElement.disabled = originalDisabled;
+        }, 2000);
+      }
+    } catch (err) {
+      console.error("Fallback: Oops, unable to copy", err);
+      if (buttonElement) {
+        alert("Failed to copy. Please copy manually:\n" + text);
+      } else {
+        alert("Failed to copy. Please copy manually.");
+      }
+    }
+    return;
+  }
+
+  navigator.clipboard.writeText(text).then(
+    function () {
+      console.log("Async: Copying to clipboard was successful!");
+      if (buttonElement) {
+        const originalText = buttonElement.innerHTML;
+        const originalDisabled = buttonElement.disabled;
+        buttonElement.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        buttonElement.disabled = true;
+        setTimeout(function () {
+          buttonElement.innerHTML = originalText;
+          buttonElement.disabled = originalDisabled;
+        }, 2000);
+      }
+    },
+    function (err) {
+      console.error("Async: Could not copy text: ", err);
+      if (buttonElement) {
+        alert("Failed to copy. Please copy manually:\n" + text);
+      } else {
+        alert("Failed to copy. Please copy manually.");
+      }
+    }
+  );
+}
